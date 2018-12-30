@@ -43,7 +43,8 @@ class UTubeObj():
                 self.title.append(a['title'])
         
         for link in soup.find_all('a', href=True):
-            self.links.append(link['href'])
+            if 'watch' in link['href']:
+                self.links.append(link['href'])
         
 
 ####################################################################################################################################
@@ -59,7 +60,7 @@ class UI(QWidget):
     #Button Functions####################################################################    
     @pyqtSlot()
     def onclick(self):
-        url='www.youtube.com{}'.format(vids.links[0])
+        url='www.youtube.com{}'.format(vids.links[1])
         webbrowser.open(url)
         print('it works')
     
